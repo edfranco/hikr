@@ -19,6 +19,6 @@ from django.conf.urls import include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url('', include('hikr_app.urls'))
+    path('', include('hikr_app.urls')),
     path('accounts/', include('accounts.urls'))
 ]

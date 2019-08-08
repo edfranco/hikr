@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.contrib.auth.models import User
 
@@ -29,8 +29,8 @@ def register(request):
                     return redirect('login')
         else:
             return render(request, 'register.html', {'error': 'Password does not match'})
-else:
-    return render(request, 'register.html',)       
+    else:
+        return render(request, 'register.html',)       
 
 
 
