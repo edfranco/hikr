@@ -31,20 +31,22 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{% url 'wall' %}">Home <span class="sr-only">(current)</span></a>
                     </li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
+                        <a class="nav-link" href="{% url 'profile' pk=user.pk %}">Profile</a>
                     </li>
+                    {% endif %}
 
                     <section>
-	                {% if user.is_authenticated %}
-		                Welcome, {{ user.first_name }}
-			            <a href="{% url 'logout' %}">Signout</a>
-			        {% else %}
-			            <a href="{% url 'login' %}">Login</a>
-			            <a href="{% url 'register' %}">Sign Up</a>
-		            {% endif %}
+                        {% if user.is_authenticated %}
+                        Welcome, {{ user.first_name }}
+                        <a href="{% url 'logout' %}">Signout</a>
+                        {% else %}
+                        <a href="{% url 'login' %}">Login</a>
+                        <a href="{% url 'register' %}">Sign Up</a>
+                        {% endif %}
 
 
                     </section>
