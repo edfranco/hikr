@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'hikr_app'
+    'hikr_app', 
+    'django_extensions',
+    'accounts'
 ]
 
 MIDDLEWARE = [
