@@ -22,8 +22,8 @@ def profile(request,pk):
 def new_hike(request):
     if request.method == 'POST':
         description = request.POST['description']
-        distance = request.distance['distance']
-        photo_url = request.photo_url['photo_url']
+        distance = request.POST['distance']
+        photo_url = request.POST['photo_url']
 
         post = Post.objects.create(
             description = description,
@@ -33,6 +33,6 @@ def new_hike(request):
 
         post.save()
 
-        return redirect('wall')
+        return redirect('post.html')
     else:
-        return render(request, 'user_wall.html', {'error': 'Something went wrong with your post'})
+        return render(request, 'post.html', {'error': 'Something went wrong with your post'})
