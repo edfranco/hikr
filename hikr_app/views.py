@@ -20,19 +20,21 @@ def profile(request,pk):
     return render(request, 'profile.html', { "profile" : profile, "posts": posts })
 
 def new_hike(request):
+    user = request.user
     if request.method == 'POST':
         description = request.POST['description']
-        distance = request.POST['distance']
+        distance_hiked = request.POST['distance_hiked']
         photo_url = request.POST['photo_url']
 
         post = Post.objects.create(
+            author = user,
             description = description,
-            distance = distance,
+            distance_hiked = distance_hiked,
             photo_url = photo_url
         )
 
         post.save()
 
-        return redirect('post.html')
+        return redirect('wall')
     else:
         return render(request, 'post.html', {'error': 'Something went wrong with your post'})
