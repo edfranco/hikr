@@ -1,0 +1,13 @@
+body{
+    background-color:whitesmoke;
+    color:black;
+}
+
+nav{
+    background-color: rgb(147, 204, 147);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid black;
+    color:white;
+}
