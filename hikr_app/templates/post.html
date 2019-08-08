@@ -4,7 +4,7 @@
 <h2>Posts</h2>
 
 <form action="{% url 'new_hike' %}" method="POST">
-
+	{% csrf_token %}
 	<p>
 		<label for="description">Description</label>
 		<input type="text" name="description" required maxlength="250" minlength="2" />
@@ -14,10 +14,11 @@
 		<label for="distance">Distance</label>
 		<input type="number" name="distance" required />
 	</p>
-    <p>
+	<p>
 		<label for="photo_url">Photo Url</label>
 		<input type="text" name="photo_url" required />
 	</p>
 
 	<button type="submit">Submit</button>
 </form>
+{% endblock %}
