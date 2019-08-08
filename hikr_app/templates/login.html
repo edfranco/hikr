@@ -1,4 +1,4 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% block content %}
 <h2>Login</h2>
 
@@ -10,8 +10,8 @@
 	{% csrf_token %}
 
 	<p>
-		<label for="email">Email</label>
-		<input type="email" name="email" required maxlength="30" minlength="2" />
+		<label for="username">Username</label>
+		<input type="text" name="username" required maxlength="30" minlength="2" />
 	</p>
 
 	<p>
