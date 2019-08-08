@@ -14,6 +14,7 @@ def wall(request):
     return render(request, 'user_wall.html', { "posts" : posts })
 
 def profile(request,pk):
+    # profile.user.pk
     profile = Profile.objects.get(id = pk)
     posts = Post.objects.filter(author = profile.user)
-    return render(request, 'profile.html', { "profile" : profile, "posts" : posts })
+    return render(request, 'profile.html', { "profile" : profile, "posts": posts })
