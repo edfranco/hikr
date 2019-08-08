@@ -37,8 +37,17 @@
                         <a class="nav-link" href="#">Profile</a>
                     </li>
 
-                    <a href="">Log In</a>
-                    <a href="">Sign Up</a>
+                    <section>
+	                {% if user.is_authenticated %}
+		                Welcome, {{ user.first_name }}
+			            <a href="{% url 'logout' %}">Signout</a>
+			        {% else %}
+			            <a href="{% url 'login' %}">Login</a>
+			            <a href="{% url 'register' %}">Sign Up</a>
+		            {% endif %}
+
+
+                    </section>
                 </ul>
 
 
@@ -48,6 +57,8 @@
     </nav>
     ​
     <h1>Welcome to Hikr</h1>
+    {% block content %}
+    {% endblock %}
     ​
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

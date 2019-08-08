@@ -8,8 +8,8 @@ def register(request):
     if request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
-        username = request.POST['username']
         email = request.POST['email']
+        username = request.POST['username']
         password = request.POST['password']
         password2 = request.POST['password2']
 
@@ -31,6 +31,29 @@ def register(request):
             return render(request, 'register.html', {'error': 'Password does not match'})
     else:
         return render(request, 'register.html',)       
+
+
+def login(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password'] 
+        
+        user = auth.authenticate(email=email, password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            return redirect('home')
+        else: 
+            return render(request, 'login.html', {'error': 'Invalid Credentials'})
+    else:
+        return render(request, 'login.html',)
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('home')        
+
+
 
 
 
