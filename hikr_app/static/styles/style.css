@@ -11,3 +11,14 @@ nav{
     border-bottom: 1px solid black;
     color:white;
 }
+
+.post-container{
+    height:50vh;
+    width: 40vw;
+    border: 1px solid black;
+}
+
+.post-container img{
+    height:10vh;
+    width: 10vw;
+}
