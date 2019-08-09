@@ -15,8 +15,9 @@ def wall(request):
 
 def profile(request,pk):
     # profile.user.pk
-    profile = Profile.objects.get(id = pk)
-    posts = Post.objects.filter(author = profile.user)
+    # profile = Profile.objects.get(id = pk)
+    profile = request.user.post_author
+    posts = Post.objects.filter(author = request.user.id)
     return render(request, 'profile.html', { "profile" : profile, "posts": posts })
 
 def new_hike(request):

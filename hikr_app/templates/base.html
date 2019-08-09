@@ -17,7 +17,7 @@
     <nav>
         <div class="left">
             <img src="{% static 'images/hiker-logo-1.png' %}" width="50" height="50" alt="">
-            <a href="{% url 'wall' %}">Home</a>
+            <a href="{% url 'home' %}">Home</a>
         </div>
         <div class="right">
             {% if user.is_authenticated %}
@@ -26,8 +26,8 @@
             {% else %}
             <a href="{% url 'login' %}">Login</a>
             <a href="{% url 'register' %}">Sign Up</a>
+        </div>
             {% endif %}
-            </ul>
         </div>
         </div>
     </nav>
