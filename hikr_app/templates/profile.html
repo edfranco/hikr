@@ -1,10 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="profile-img-section">
+                    <img src="{{ profile.image_url }}" alt="{{ user.username }}'s profile pic" class="user-profile-img">
+            </div> 
+        </div>
+    </div>
+</div>
+
 <div clas="profile-container"></div>
 <h1>{{ user.username }}'s Profile</h1>
 </div>
 <div class="profile-content">
-    <img src="{{ profile.image_url }}" alt="{{ user.username }}'s profile pic">
+    <!-- <img src="{{ profile.image_url }}" alt="{{ user.username }}'s profile pic" width="100px" height="100px" style="border-radius: 100%"> -->
     <div class="users-posts">
         {% for post in posts %}
         <div class="post-container">
