@@ -1,27 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
+{% if user.is_authenticated %}
+Welcome, {{ user.first_name }}
 
-<section>
-    <h1>Welcome to Your Hiking Home</h1>
-</section>
+{% endif %}
 
-<main>
-    <div class="create-post">
-        <h3>Track Your Hikes</h3>
-        <a href="{% url 'new_hike' %}"><button>New Hike</button></a>
-    </div>
+<div class="create-post">
+    <h3>Track Your Hikes</h3>
+    <a href="{% url 'new_hike' %}"><button>New Hike</button></a>
+</div>
 
-    <h2>Posts</h2>
-    {% for post in posts %}
-    <div class="post-container">
-        <a href="{% url 'profile' pk=post.author.pk %}">
-            <h4>{{post.author.first_name}}'s Hike</h4>
-        </a>
 
-        <img src="{{post.photo_url}}" />
-        <p>{{post.description}}</p>
-        <p>Distance:{{post.distance_hiked}}mi</p>
-    </div>
-    {% endfor %}
-</main>
+
+<h2>Posts</h2>
+{% for post in posts %}
+<div class="post-container">
+    <a href="{% url 'profile' pk=post.author.pk %}">
+        <h4>{{post.author.first_name}}'s Hike</h4>
+    </a>
+
+    <img src="{{post.photo_url}}" />
+    <p>{{post.description}}</p>
+    <p>Distance:{{post.distance_hiked}}mi</p>
+</div>
+{% endfor %}
 {% endblock %}

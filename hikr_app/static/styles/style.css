@@ -4,21 +4,63 @@ body{
 }
 
 nav{
-    background-color: rgb(147, 204, 147);
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     border-bottom: 1px solid black;
-    color:white;
+    font-size: 1.3em;
+}
+
+nav ul{
+    margin: 0;
+}
+
+nav a{
+    color:black;
+    text-decoration: none;
+    list-style: none;
+}
+
+nav .left{
+    display: flex;
+    align-items: flex-end;
+}
+
+nav .right{
+    display: flex;
+    align-items: flex-end;
+    padding-right: 1em;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .post-container{
     height:50vh;
     width: 40vw;
     border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.post-container h4{
+    margin:0;
+}
+
+.post-container a{
+    color: black;
+    text-decoration: none;
+    font-size: 1.5em;
 }
 
 .post-container img{
-    height:10vh;
-    width: 10vw;
+    height:30vh;
+    width: 100%;
 }
