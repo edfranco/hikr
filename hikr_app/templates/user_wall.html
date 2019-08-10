@@ -46,22 +46,14 @@ Welcome, {{ user.first_name }}
         <img src="{{post.photo_url}}" />
         <p>{{post.description}}</p>
         <p>Distance:{{post.distance_hiked}}mi</p>
+        {% if user.pk == post.author.pk %}
+        <div class="ud-buttons">
+            <button>Edit</button>
+            <button>Delete</button>
+        </div>
+        {% endif %}
     </div>
 
-    {% endfor %}
-
-    {% else %}
-    <h2>Posts</h2>
-    {% for post in posts %}
-    <div class="post-container">
-        <a href="{% url 'profile' pk=post.author.pk %}">
-            <h4>{{post.author}}'s Hike</h4>
-        </a>
-
-        <img src="{{post.photo_url}}" />
-        <p>{{post.description}}</p>
-        <p>Distance:{{post.distance_hiked}}mi</p>
-    </div>
     {% endfor %}
     {% endif %}
 </div>
