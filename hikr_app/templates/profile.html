@@ -1,14 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="profile-img-section">
+                    <img src="{{ profile.image_url }}" alt="{{ user.username }}'s profile pic" class="user-profile-img">
+            </div>
+            <div class="profile-img-section">
+                
+                    <a href="{% url 'new_hike' %}"><button type="button" class="btn btn-success"><i class="fas fa-plus-circle"></i> New Hike</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div clas="profile-container"></div>
-<h1>{{profile.user.first_name}}'s Profile</h1>
+<h1>{{ user.username }}'s Profile</h1>
 </div>
 <div class="profile-content">
-    <img src="{{profile.image_url}}" alt="{{profile.user.first_name}}'s profile pic">
+    <!-- <img src="{{ profile.image_url }}" alt="{{ user.username }}'s profile pic" width="100px" height="100px" style="border-radius: 100%"> -->
     <div class="users-posts">
         {% for post in posts %}
         <div class="post-container">
-            <h4>{{post.author.first_name}}'s Hike</h4>
+            <h4>{{user.username}}'s Hike</h4>
             <img src="{{post.photo_url}}" />
             <p>{{post.description}}</p>
             <p>Distance:{{post.distance_hiked}}mi</p>
