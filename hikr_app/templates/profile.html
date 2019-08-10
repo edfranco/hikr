@@ -6,7 +6,11 @@
         <div class="col-md-12">
             <div class="profile-img-section">
                     <img src="{{ profile.image_url }}" alt="{{ user.username }}'s profile pic" class="user-profile-img">
-            </div> 
+            </div>
+            <div class="profile-img-section">
+                
+                    <a href="{% url 'new_hike' %}"><button type="button" class="btn btn-success"><i class="fas fa-plus-circle"></i> New Hike</button></a>
+            </div>
         </div>
     </div>
 </div>

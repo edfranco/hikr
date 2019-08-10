@@ -6,6 +6,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">​
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/cfd2409b6f.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Main CSS -->
@@ -21,6 +23,7 @@
         </div>
         <div class="right">
             {% if user.is_authenticated %}
+            <a href="{% url 'wall' %}">Wall</a>
             <a href="{% url 'profile' pk=user.pk %}">Profile</a>
             <a href="{% url 'logout' %}">Signout</a>
             {% else %}
