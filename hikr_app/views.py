@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 from .models import Post, Comment, Profile
 
 # Create your views here.
-def home(request):
-    return render(request,'base.html')
+def base(request):
+    return render(request,'home.html')
 
 def wall(request):
     posts = Post.objects.all()
