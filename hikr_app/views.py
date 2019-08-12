@@ -14,11 +14,14 @@ def wall(request):
     return render(request, 'user_wall.html', { "posts" : posts })
 
 def profile(request,pk):
-    # profile.user.pk
-    # profile = Profile.objects.get(id = pk)
-    profile = Profile.objects.get(user=request.user)
-    posts = Post.objects.filter(author = request.user.id)
-    return render(request, 'profile.html', { "profile" : profile, "posts": posts })
+    profile = Profile.objects.get(id=pk)
+    posts = Post.objects.filter(author=profile.user)
+    length = len(posts)
+    return render(request, 'profile.html', { 
+        "profile" : profile, 
+        "posts": posts,  
+        "length": length
+        })
 
 def new_hike(request):
     user = request.user
@@ -39,3 +42,26 @@ def new_hike(request):
         return redirect('wall')
     else:
         return render(request, 'post.html', {'error': 'Something went wrong with your post'})
+
+def edit_post(request,pk):
+    post = Post.objects.get(id=pk)
+    if request.method == "POST":
+        description = request.POST['description']
+        distance_hiked = request.POST['distance_hiked']
+        photo_url = request.POST['photo_url']
+        
+        post.description = description
+        post.distance_hiked = distance_hiked
+        post.photo_url = photo_url
+        
+        post.save()
+        return redirect('wall')
+    else: 
+        return render(request, 'post_edit.html', {"post" : post})
+
+def delete_post(request,pk):
+    post = Post.objects.get(id=pk)
+    if request.user.pk is not post.author.pk:
+        return redirect('wall')
+    post.delete()
+    return redirect('wall')

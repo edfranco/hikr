@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2>Posts</h2>
+            <form action="{% url 'edit_post' pk=post.pk %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" class="form-control" name="description" maxlength="250" minlength="2"
+                        value="{{ post.description }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="distance_hiked">Distance</label>
+                    <input type="number" class="form-control" name="distance_hiked" value="{{ post.distance_hiked }}"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="photo_url">Photo Url</label>
+                    <input type="text" class="form-control" name="photo_url" value="{{ post.photo_url }}" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
