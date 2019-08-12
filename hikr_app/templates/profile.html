@@ -8,11 +8,14 @@
             <img src="{{profile.image_url}}"
                 alt="{{ profile.user.first_name }} {{profile.user.last_name}} profile image" />
             <p>Joined On: {{ profile.date_joined }} </p>
-            <p>Hikes Posted: {{ length }} </p>
-            <p>Total Distance Hiked: {{ total_distance }} miles</p>
-        </div>
+            <p><i class="fas fa-address-book"></i> Hikes Posted: {{ length }} </p>
+            <p><i class="fas fa-hiking"></i> Distance Hiked: {{ total_distance }} miles</p>
+        
         {% if user.pk == profile.user.pk %}
-        <a href="{% url 'new_hike' %}"><button>Track Hike</button></a>
+        <div class="new-hike-btn">
+            <a href="{% url 'new_hike' %}"><button class="btn btn-success"><i class="fas fa-plus-circle"></i> Track Hike</button></a>
+        </div>
+    </div>
         {% endif %}
     </div>
     <div class="users-posts">
