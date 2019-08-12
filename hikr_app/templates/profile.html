@@ -8,7 +8,10 @@
             <img src="{{profile.image_url}}"
                 alt="{{ profile.user.first_name }} {{profile.user.last_name}} profile image" />
             <p>Joined On: {{profile.date_joined}} </p>
+            <p>Hikes Posted: {{length}} </p>
         </div>
+
+        <a href="{% url 'new_hike' %}"><button>Track Hike</button></a>
     </div>
     <div class="users-posts">
         {% for post in posts %}

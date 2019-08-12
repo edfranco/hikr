@@ -7,7 +7,7 @@
         <div class="col-md-6 offset-md-3">
             <h2>Posts</h2>
             <form action="{% url 'edit_post' pk=post.pk %}" method="PUT">
-                {% csrf_token %}
+                <!-- {% csrf_token %} -->
                 <div class="form-group">
                     <label for="description">Description</label>
                     <input type="text" class="form-control" name="description" maxlength="250" minlength="2" required>
