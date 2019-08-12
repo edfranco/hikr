@@ -46,7 +46,6 @@ main{
 }
 
 .post-container{
-    height:50vh;
     width: 40vw;
     border: 1px solid black;
     display: flex;
