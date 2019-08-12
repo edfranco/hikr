@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .models import Post, Comment, Profile, Like
@@ -114,4 +114,18 @@ def like(request,pk):
         return redirect('wall')
     else:
         return render(request, 'user_wall.html')
+
+def api(request):
+    users = User.objects.all().values('pk','first_name','last_name')
+    posts = Post.objects.all().values('pk','author','description')
+    likes = Like.objects.all().values('pk', 'liker', 'post')
+    users_list=list(users)
+    posts_list=list(posts)
+    likes_list=list(likes)
+    data={
+        "users":users_list,
+        "posts":posts_list,
+        "likes":likes_list
+    }
+    return JsonResponse(data,safe=False)
 
