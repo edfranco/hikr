@@ -20,11 +20,13 @@
     <nav>
         <div class="left">
             <img src="{% static 'images/hiker-logo-1.png' %}" width="50" height="50" alt="">
+
             {% if user.is_authenticated %}
             <a href="{% url 'wall' %}">Home</a>
             {% else %}
             <a href="{% url 'home' %}">Home</a>
             {% endif %}
+
         </div>
         <div class="right">
             {% if user.is_authenticated %}
@@ -38,8 +40,26 @@
         </div>
         </div>
     </nav>
-    {% block content %}
-    {% endblock %}
+
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header-text">
+                    <h1>Welcome to Hikr</h1>
+                    <p class="lead lead-text">The adventure starts here.</p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <img src="{% static 'images/cover-img.png' %}" class="img-fluid" alt="Responsive image">
+            </div>
+        </div>
+    </div> -->
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

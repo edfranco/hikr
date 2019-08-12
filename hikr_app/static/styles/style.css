@@ -122,3 +122,12 @@ border:1px solid #ccc !important;
     height: 200px;
     width: 200px;
 }
+
+.header-text {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.lead-text {
+    margin-bottom: 0;
+}
