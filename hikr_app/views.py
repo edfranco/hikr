@@ -13,11 +13,13 @@ def wall(request):
     posts = Post.objects.all()
     comments = Comment.objects.all()
     likes = Like.objects.all()
+    counter = 0
     
     return render(request, 'user_wall.html', { 
         "posts" : posts, 
         "comments": comments,
-        "likes" : likes,
+        "likes":like,
+        "counter":counter
         })
 
 def profile(request,pk):
@@ -25,7 +27,7 @@ def profile(request,pk):
     posts = Post.objects.filter(author=profile.user)
     comments = Comment.objects.all()
     likes = Like.objects.all()
-    
+   
     length = len(posts)
     total_distance = 0
     for post in posts:
@@ -37,7 +39,7 @@ def profile(request,pk):
         "length": length,
         "comments": comments,
         "total_distance": total_distance,
-        "likes" : likes
+        
         })
 
 def new_hike(request):
@@ -100,11 +102,12 @@ def comment_post(request,pk):
     else:
         return render(request, 'user_wall.html')
 def like(request,pk):
-    user = request.user
+    liker = request.user
     post = Post.objects.get(id=pk)
+    
     if request.method == "POST":
         like = Like.objects.create(
-            user = user,
+            liker = liker,
             post = post
         )
         like.save()

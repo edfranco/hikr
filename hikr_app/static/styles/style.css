@@ -46,13 +46,13 @@ main{
 }
 
 .post-container{
+    position: relative;
     width: 40vw;
     border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    /* margin-bottom: 1em; */
 }
 
 .post-container h4{
@@ -68,6 +68,28 @@ main{
 .post-container img{
     height:30vh;
     width: 100%;
+}
+
+.post-top{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+.ud-buttons{
+    position: absolute;
+    right:0;
+    top:0;
+}
+
+.likes{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.thumb:hover{
+    cursor: pointer;
 }
 
 .profile-container{

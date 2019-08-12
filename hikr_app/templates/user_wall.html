@@ -3,10 +3,21 @@
 
 <h2>Posts</h2>
 {% for post in posts %}
-<div class="post-container">
-    <a href="{% url 'profile' pk=post.author.pk %}">
-        <h4>{{post.author}}'s Hike</h4>
-    </a>
+<div class="post-container" id="{{ post.pk }}">
+    <div class="post-top">
+        <div class="spacer"></div>
+        <a href="{% url 'profile' pk=post.author.pk %}">
+            <h4>{{post.author.first_name}}'s Hike</h4>
+        </a>
+
+        {% if user.pk == post.author.pk %}
+        <div class="ud-buttons">
+            <a href="{% url 'edit_post' pk=post.pk %}"><i class="far fa-edit"></i></a>
+            <a href="{% url 'delete_post' pk=post.pk %}"><i class="far fa-trash-alt"></i></a>
+        </div>
+        {% endif %}
+
+    </div>
 
     <img src="{{post.photo_url}}" />
     <p>{{post.description}}</p>
@@ -23,24 +34,16 @@
             {% csrf_token %}
             <div class="user-comment">
                 <input type="text" class="form-control" name="content" placeholder="Add Comment..">
-            <!-- <input type="text" placeholder="Add Comment.." name="content"> -->
-            <!-- <input type="submit"> -->
-            <button type="submit" class="btn btn-secondary comment-btn">Submit</button>
+                <!-- <input type="text" placeholder="Add Comment.." name="content"> -->
+                <!-- <input type="submit"> -->
+                <button type="submit" class="btn btn-secondary comment-btn">Submit</button>
             </div>
         </form>
     </div>
-
-
-
-    <div class="likes">Like: {{ length }}</div>
-
-
-    {% if user.pk == post.author.pk %}
-    <div class="ud-buttons">
-        <a href="{% url 'edit_post' pk=post.pk %}"><button class="btn btn-success">Edit</button></a>
-        <a href="{% url 'delete_post' pk=post.pk %}"><button class="btn btn-danger">Delete</button></a>
+    <div class="likes">
+        <i class="thumb far fa-thumbs-up"></i>
+        <div class=likes-display>Like: 0</div>
     </div>
-    {% endif %}
     {% endfor %}
 </div>
 </main>
