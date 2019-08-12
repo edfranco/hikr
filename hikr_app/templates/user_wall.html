@@ -27,6 +27,10 @@
     </div>
 
 
+
+    <div class="likes">Like: {{ length }}</div>
+
+
     {% if user.pk == post.author.pk %}
     <div class="ud-buttons">
         <a href="{% url 'edit_post' pk=post.pk %}"><button>Edit</button></a>
