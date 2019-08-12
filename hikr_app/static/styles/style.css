@@ -52,7 +52,7 @@ main{
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom: 1em;
+    /* margin-bottom: 1em; */
 }
 
 .post-container h4{
@@ -135,4 +135,23 @@ border:1px solid #ccc !important;
     background-color: #008CBA !important;
     border-color: #008CBA !important;
     color: white;
+}
+
+.user-comment {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.ud-buttons {
+    margin-bottom: 15px;
+}
+
+.comment-btn {
+    margin-left: 5px;
+}
+
+.new-hike-btn {
+    display: flex;
+    justify-content: left;
 }
