@@ -13,6 +13,7 @@ class Post(models.Model):
     distance_hiked = models.PositiveIntegerField()
     location = models.CharField(max_length=100)
     photo_url = models.TextField()
+    #likes = models.PositiveIntegerField(default=0)
 
     def __str__(self):
       return (f"{self.author.first_name} Post")
@@ -29,3 +30,8 @@ class Comment(models.Model):
     author = models.ForeignKey(User, on_delete = models.CASCADE, related_name= 'comment_author' )
     post = models.ForeignKey(Post, on_delete = models.CASCADE, related_name= 'comments_post')
     content = models.TextField()
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE, related_name= 'user')
+    post = models.ForeignKey(Post, on_delete = models.CASCADE, related_name= 'post' )
+
