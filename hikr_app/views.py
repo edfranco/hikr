@@ -11,16 +11,25 @@ def base(request):
 
 def wall(request):
     posts = Post.objects.all()
-    return render(request, 'user_wall.html', { "posts" : posts })
+    comments = Comment.objects.all()
+    return render(request, 'user_wall.html', { "posts" : posts, "comments": comments })
 
 def profile(request,pk):
     profile = Profile.objects.get(id=pk)
     posts = Post.objects.filter(author=profile.user)
+    comments = Comment.objects.all()
+    
     length = len(posts)
+    total_distance = 0
+    for post in posts:
+        total_distance = total_distance + post.distance_hiked
+    
     return render(request, 'profile.html', { 
         "profile" : profile, 
         "posts": posts,  
-        "length": length
+        "length": length,
+        "comments": comments,
+        "total_distance": total_distance
         })
 
 def new_hike(request):
@@ -65,3 +74,22 @@ def delete_post(request,pk):
         return redirect('wall')
     post.delete()
     return redirect('wall')
+
+def comment_post(request,pk):
+    user = request.user
+    post = Post.objects.get(id=pk)
+    if request.method == "POST":
+        content = request.POST['content']
+        
+        comment = Comment.objects.create(
+            content = content,
+            author = user,
+            post = post
+        )
+
+        
+        comment.save()
+        return redirect('wall')
+    
+    else:
+        return render(request, 'user_wall.html')

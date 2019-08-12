@@ -1,25 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h2>Posts</h2>
-    {% for post in posts %}
-    <div class="post-container">
-        <a href="{% url 'profile' pk=post.author.pk %}">
-            <h4>{{post.author}}'s Hike</h4>
-        </a>
+<h2>Posts</h2>
+{% for post in posts %}
+<div class="post-container">
+    <a href="{% url 'profile' pk=post.author.pk %}">
+        <h4>{{post.author}}'s Hike</h4>
+    </a>
 
-        <img src="{{post.photo_url}}" />
-        <p>{{post.description}}</p>
-        <p>Distance:{{post.distance_hiked}}mi</p>
+    <img src="{{post.photo_url}}" />
+    <p>{{post.description}}</p>
+    <p>Distance:{{post.distance_hiked}}mi</p>
 
+    {% for comment in comments %}
+    {% if comment.post.pk == post.pk %}
+    <p> {{ comment.author.first_name }}: {{ comment.content }}</p>
+    {% endif %}
+    {% endfor %}
 
-        {% if user.pk == post.author.pk %}
-        <div class="ud-buttons">
-            <a href="{% url 'edit_post' pk=post.pk %}"><button>Edit</button></a>
-            <a href="{% url 'delete_post' pk=post.pk %}"><button>Delete</button></a>
-        </div>
-        {% endif %}
-        {% endfor %}
+    <div class="comment-form">
+        <form action="{% url 'comment_post' pk=post.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="text" placeholder="Add Comment.." name="content">
+            <input type="submit">
+        </form>
     </div>
+
+
+    {% if user.pk == post.author.pk %}
+    <div class="ud-buttons">
+        <a href="{% url 'edit_post' pk=post.pk %}"><button>Edit</button></a>
+        <a href="{% url 'delete_post' pk=post.pk %}"><button>Delete</button></a>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
 </main>
 {% endblock %}
