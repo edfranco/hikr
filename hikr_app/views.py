@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from .models import Post, Comment, Profile
+from .models import Post, Comment, Profile, Like
 
 # Create your views here.
 def base(request):
@@ -11,16 +11,32 @@ def base(request):
 
 def wall(request):
     posts = Post.objects.all()
-    return render(request, 'user_wall.html', { "posts" : posts })
+    comments = Comment.objects.all()
+    likes = Like.objects.all()
+    return render(request, 'user_wall.html', { 
+        "posts" : posts, 
+        "comments": comments,
+        "likes" : likes 
+        })
 
 def profile(request,pk):
     profile = Profile.objects.get(id=pk)
     posts = Post.objects.filter(author=profile.user)
+    comments = Comment.objects.all()
+    likes = Like.objects.all()
+    
     length = len(posts)
+    total_distance = 0
+    for post in posts:
+        total_distance = total_distance + post.distance_hiked
+    
     return render(request, 'profile.html', { 
         "profile" : profile, 
         "posts": posts,  
-        "length": length
+        "length": length,
+        "comments": comments,
+        "total_distance": total_distance,
+        "likes" : likes
         })
 
 def new_hike(request):
@@ -65,3 +81,32 @@ def delete_post(request,pk):
         return redirect('wall')
     post.delete()
     return redirect('wall')
+
+def comment_post(request,pk):
+    user = request.user
+    post = Post.objects.get(id=pk)
+    if request.method == "POST":
+        content = request.POST['content']
+        comment = Comment.objects.create(
+            content = content,
+            author = user,
+            post = post
+        )
+        comment.save()
+        return redirect('wall')
+    
+    else:
+        return render(request, 'user_wall.html')
+def like(request,pk):
+    user = request.user
+    post = Post.objects.get(id=pk)
+    if request.method == "POST":
+        like = Like.objects.create(
+            user = user,
+            post = post
+        )
+        like.save()
+        return redirect('wall')
+    else:
+        return render(request, 'user_wall.html')
+

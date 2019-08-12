@@ -46,7 +46,6 @@ main{
 }
 
 .post-container{
-    height:50vh;
     width: 40vw;
     border: 1px solid black;
     display: flex;
@@ -130,4 +129,10 @@ border:1px solid #ccc !important;
 
 .lead-text {
     margin-bottom: 0;
+}
+
+.button-color {
+    background-color: #008CBA !important;
+    border-color: #008CBA !important;
+    color: white;
 }
