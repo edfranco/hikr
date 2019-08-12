@@ -1,20 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-<div clas="profile-container"></div>
-{% comment %} <h1>{{profile.user.first_name}}'s Profile</h1> {% endcomment %}
-<h1>{{user.username}}'s Profile</h1>
-</div>
-<div class="profile-content">
-    <img src="{{profile.image_url}}" alt="{{user.username}}'s profile pic">
+
+<div class="profile-container">
+    <div class="profile-content">
+        <h1>{{profile.user.first_name}} {{profile.user.last_name}} </h1>
+        <div class="profile-image-container">
+            <img src="{{profile.image_url}}"
+                alt="{{ profile.user.first_name }} {{profile.user.last_name}} profile image" />
+            <p>Joined On: {{profile.date_joined}} </p>
+            <p>Hikes Posted: {{length}} </p>
+        </div>
+
+        <a href="{% url 'new_hike' %}"><button>Track Hike</button></a>
+    </div>
     <div class="users-posts">
         {% for post in posts %}
         <div class="post-container">
-            <h4>{{user.username}}'s Hike</h4>
+            <h4>{{profile.user.username}}'s Hike</h4>
             <img src="{{post.photo_url}}" />
             <p>{{post.description}}</p>
             <p>Distance:{{post.distance_hiked}}mi</p>
-            <a href="{% url 'edit-hike' pk=song_id %}">Edit</a>
+
+            {% if user.pk == post.author.pk %}
+            <div class="ud-buttons">
+                <a href="{% url 'edit_post' pk=post.pk %}"><button>Edit</button></a>
+                <a href="{% url 'delete_post' pk=post.pk %}"><button>Delete</button></a>
+            </div>
+            {% endif %}
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
-    {% endblock %}
+</div>
+
+
+
+{% endblock %}

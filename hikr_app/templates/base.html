@@ -6,6 +6,11 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">​
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/cfd2409b6f.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Main CSS -->
     <link rel="stylesheet" href="{% static 'styles/style.css' %}">
     <title>Hikr</title>
@@ -15,7 +20,13 @@
     <nav>
         <div class="left">
             <img src="{% static 'images/hiker-logo-1.png' %}" width="50" height="50" alt="">
+
+            {% if user.is_authenticated %}
             <a href="{% url 'wall' %}">Home</a>
+            {% else %}
+            <a href="{% url 'home' %}">Home</a>
+            {% endif %}
+
         </div>
         <div class="right">
             {% if user.is_authenticated %}
@@ -24,20 +35,31 @@
             {% else %}
             <a href="{% url 'login' %}">Login</a>
             <a href="{% url 'register' %}">Sign Up</a>
-            {% endif %}
-            </ul>
+        </div>
+        {% endif %}
         </div>
         </div>
     </nav>
+
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header-text">
+                    <h1>Welcome to Hikr</h1>
+                    <p class="lead lead-text">The adventure starts here.</p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <img src="{% static 'images/cover-img.png' %}" class="img-fluid" alt="Responsive image">
+            </div>
+        </div>
+    </div> -->
 
     <main>
         {% block content %}
         {% endblock %}
     </main>
-    ​
-
-
-    ​
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

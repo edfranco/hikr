@@ -1,7 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2>Posts</h2>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+				<h2>Posts</h2>
+				<form action="{% url 'new_hike' %}" method="POST">
+					{% csrf_token %}
+					<div class="form-group">
+						<label for="description">Description</label>
+						<input type="text" class="form-control" name="description" maxlength="250" minlength="2" required>
+					</div>
+					<div class="form-group">
+						<label for="distance_hiked">Distance</label>
+						<input type="number" class="form-control" name="distance_hiked" required>
+					</div>
+					<div class="form-group">
+						<label for="photo_url">Photo Url</label>
+						<input type="text" class="form-control" name="photo_url" required>
+					</div>
+					<button type="submit">Submit</button>
+				</form>
+				
+		</div>
+	</div>
+</div>
+
+<!-- <h2>Posts</h2>
 
 <form action="{% url 'new_hike' %}" method="POST">
 	{% csrf_token %}
@@ -20,5 +46,5 @@
 	</p>
 
 	<button type="submit">Submit</button>
-</form>
+</form> -->
 {% endblock %}
