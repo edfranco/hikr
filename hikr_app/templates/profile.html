@@ -3,15 +3,17 @@
 
 <div class="profile-container">
     <div class="profile-content">
-        <h1>{{profile.user.first_name}} {{profile.user.last_name}} </h1>
+        <h1>{{ profile.user.first_name }} {{ profile.user.last_name }} </h1>
         <div class="profile-image-container">
             <img src="{{profile.image_url}}"
                 alt="{{ profile.user.first_name }} {{profile.user.last_name}} profile image" />
-            <p>Joined On: {{profile.date_joined}} </p>
-            <p>Hikes Posted: {{length}} </p>
+            <p>Joined On: {{ profile.date_joined }} </p>
+            <p>Hikes Posted: {{ length }} </p>
+            <p>Total Distance Hiked: {{ total_distance }} miles</p>
         </div>
-
+        {% if user.pk == profile.user.pk %}
         <a href="{% url 'new_hike' %}"><button>Track Hike</button></a>
+        {% endif %}
     </div>
     <div class="users-posts">
         {% for post in posts %}
@@ -20,6 +22,12 @@
             <img src="{{post.photo_url}}" />
             <p>{{post.description}}</p>
             <p>Distance:{{post.distance_hiked}}mi</p>
+
+            {% for comment in comments %}
+            {% if comment.post.pk == post.pk %}
+            <p> {{ comment.author.first_name }}: {{ comment.content }}</p>
+            {% endif %}
+            {% endfor %}
 
             {% if user.pk == post.author.pk %}
             <div class="ud-buttons">
