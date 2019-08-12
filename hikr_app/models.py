@@ -32,6 +32,6 @@ class Comment(models.Model):
     content = models.TextField()
 
 class Like(models.Model):
-    user = models.ForeignKey(User, on_delete = models.CASCADE, related_name= 'user')
+    liker = models.ForeignKey(User, on_delete = models.CASCADE, related_name= 'liker')
     post = models.ForeignKey(Post, on_delete = models.CASCADE, related_name= 'post' )
 
