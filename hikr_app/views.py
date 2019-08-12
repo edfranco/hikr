@@ -46,7 +46,7 @@ def new_hike(request):
 def edit_post(request,pk):
     post = Post.objects.get(id=pk)
     if request.method == "PUT":
-        post.update(
+        post.objects.update(
             description = description,
             distance_hiked = distance_hiked,
             photo_url = photo_url
