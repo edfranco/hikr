@@ -1,41 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<!-- {% if user.is_authenticated %}
-Welcome, {{ user.first_name }}
-
-{% endif %}
-
-<div class="create-post">
-    <h3>Track Your Hikes</h3>
-    <a href="{% url 'new_hike' %}"><button>New Hike</button></a>
-</div>
-
-
-
-<h2>Posts</h2>
-{% for post in posts %}
-<div class="post-container">
-    <a href="{% url 'profile' pk=post.author.pk %}">
-        <h4>{{post.author}}'s Hike</h4>
-    </a>
-
-    <img src="{{post.photo_url}}" />
-    <p>{{post.description}}</p>
-    <p>Distance:{{post.distance_hiked}}mi</p>
-</div>
-{% endfor %} -->
-
-
-
-<div class="right">
-    {% if user.is_authenticated %}
-    <!-- <a href="{% url 'profile' pk=user.pk %}">Profile</a>
-        <a href="{% url 'logout' %}">Signout</a> -->
-    <!-- <div class="create-post">
-                <h3>Track Your Hikes</h3>
-                <a href="{% url 'new_hike' %}"><button>New Hike</button></a>
-            </div> -->
-
+<main>
     <h2>Posts</h2>
     {% for post in posts %}
     <div class="post-container">
@@ -46,15 +11,14 @@ Welcome, {{ user.first_name }}
         <img src="{{post.photo_url}}" />
         <p>{{post.description}}</p>
         <p>Distance:{{post.distance_hiked}}mi</p>
+
         {% if user.pk == post.author.pk %}
         <div class="ud-buttons">
-            <button>Edit</button>
-            <button>Delete</button>
+            <a href="{% url 'edit_post' pk=post.pk %}"><button>Edit</button></a>
+            <a href="{% url 'delete_post' pk=post.pk %}"><button>Delete</button></a>
         </div>
         {% endif %}
+        {% endfor %}
     </div>
-
-    {% endfor %}
-    {% endif %}
-</div>
+</main>
 {% endblock %}
