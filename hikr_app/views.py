@@ -45,16 +45,19 @@ def new_hike(request):
 
 def edit_post(request,pk):
     post = Post.objects.get(id=pk)
-    if request.method == "PUT":
-        post.objects.update(
-            description = description,
-            distance_hiked = distance_hiked,
-            photo_url = photo_url
-        )
+    if request.method == "POST":
+        description = request.POST['description']
+        distance_hiked = request.POST['distance_hiked']
+        photo_url = request.POST['photo_url']
+        
+        post.description = description
+        post.distance_hiked = distance_hiked
+        post.photo_url = photo_url
+        
         post.save()
         return redirect('wall')
     else: 
-        return render(request, 'post_edit.html', {'error' : 'Something went wrong with your edit', "post" : post})
+        return render(request, 'post_edit.html', {"post" : post})
 
 def delete_post(request,pk):
     post = Post.objects.get(id=pk)
