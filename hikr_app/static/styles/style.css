@@ -166,4 +166,8 @@ border:1px solid #ccc !important;
 
 .footer-section a:hover {
     color: whitesmoke;
-  }
+}
+
+.footer-section-bottom {
+    height: 70vh;
+}
