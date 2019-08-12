@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 <div clas="profile-container"></div>
-<h1>{{profile.user.first_name}}'s Profile</h1>
+{% comment %} <h1>{{profile.user.first_name}}'s Profile</h1> {% endcomment %}
+<h1>{{user.username}}'s Profile</h1>
 </div>
 <div class="profile-content">
-    <img src="{{profile.image_url}}" alt="{{profile.user.first_name}}'s profile pic">
+    <img src="{{profile.image_url}}" alt="{{user.username}}'s profile pic">
     <div class="users-posts">
         {% for post in posts %}
         <div class="post-container">
-            <h4>{{post.author.first_name}}'s Hike</h4>
+            <h4>{{user.username}}'s Hike</h4>
             <img src="{{post.photo_url}}" />
             <p>{{post.description}}</p>
             <p>Distance:{{post.distance_hiked}}mi</p>
+            <a href="{% url 'edit-hike' pk=song_id %}">Edit</a>
         </div>
         {% endfor %}
     </div>

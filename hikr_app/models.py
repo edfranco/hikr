@@ -13,6 +13,7 @@ class Post(models.Model):
     distance_hiked = models.PositiveIntegerField()
     location = models.CharField(max_length=100)
     photo_url = models.TextField()
+    #likes = models.PositiveIntegerField(default=0)
 
     def __str__(self):
       return (f"{self.author.first_name} Post")

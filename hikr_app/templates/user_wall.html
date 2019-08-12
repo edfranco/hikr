@@ -16,12 +16,18 @@ Welcome, {{ user.first_name }}
 {% for post in posts %}
 <div class="post-container">
     <a href="{% url 'profile' pk=post.author.pk %}">
-        <h4>{{post.author.first_name}}'s Hike</h4>
+        <h4>{{post.author}}'s Hike</h4>
     </a>
 
     <img src="{{post.photo_url}}" />
     <p>{{post.description}}</p>
     <p>Distance:{{post.distance_hiked}}mi</p>
+    <a class="waves-effect waves-light btn" data-id="{{post.id}}">
+    Likes: {% if post.likes > 0 %} 
+    {{ post.likes }} 
+    {% else %} None :
+    ( {% endif %}
+    </a>
 </div>
 {% endfor %}
 {% endblock %}
