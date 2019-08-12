@@ -10,13 +10,16 @@
             <p>Joined On: {{ profile.date_joined }} </p>
             <p><i class="fas fa-address-book"></i> Hikes Posted: {{ length }} </p>
             <p><i class="fas fa-hiking"></i> Distance Hiked: {{ total_distance }} miles</p>
-        
-        {% if user.pk == profile.user.pk %}
-        <div class="new-hike-btn">
-            <a href="{% url 'new_hike' %}"><button class="btn btn-success"><i class="fas fa-plus-circle"></i> Track Hike</button></a>
+            {% if user.pk == profile.user.pk %}
+            <div class="new-hike-btn">
+                <a href="{% url 'new_hike' %}"><button class="btn btn-success"><i class="fas fa-plus-circle"></i> Track
+                        Hike</button></a>
+            </div>
+            {% endif %}
         </div>
-    </div>
-        {% endif %}
+
+
+
     </div>
     <div class="users-posts">
         {% for post in posts %}
