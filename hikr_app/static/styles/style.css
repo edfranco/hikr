@@ -71,7 +71,6 @@ main{
 }
 
 .profile-container{
-    height:100vh;
     display: grid;
     grid-template-columns: 1fr 4fr;
 }   
@@ -155,3 +154,16 @@ border:1px solid #ccc !important;
     display: flex;
     justify-content: left;
 }
+
+.footer-section {
+    margin-top: 20px;
+    background-color: rgb(46, 49, 49);
+}
+
+.footer-logo {
+    margin-bottom: 5px;
+}
+
+.footer-section a:hover {
+    color: whitesmoke;
+  }
