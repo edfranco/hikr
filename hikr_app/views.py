@@ -3,11 +3,17 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+<<<<<<< HEAD
 from .models import Post, Comment, Profile, Like
+=======
+from django.shortcuts import get_object_or_404
+from .models import Post, Comment, Profile
+from .forms import PostForm
+>>>>>>> 7b075d0a328331c2370441d6a470751a4613140d
 
 # Create your views here.
-def base(request):
-    return render(request,'home.html')
+def home(request):
+    return render(request,'base.html')
 
 def wall(request):
     posts = Post.objects.all()
@@ -19,6 +25,7 @@ def wall(request):
         "likes" : likes 
         })
 
+<<<<<<< HEAD
 def profile(request,pk):
     profile = Profile.objects.get(id=pk)
     posts = Post.objects.filter(author=profile.user)
@@ -38,6 +45,15 @@ def profile(request,pk):
         "total_distance": total_distance,
         "likes" : likes
         })
+=======
+def profile(request, pk):
+    # profile.user.pk
+    #profile = Profile.objects.get(id = pk)
+    # profile = request.user.post_author
+    profile = Profile.objects.get(user = request.user)
+    posts = Post.objects.filter(author = request.user.id)
+    return render(request, 'profile.html', { "profile" : profile, "posts": posts })
+>>>>>>> 7b075d0a328331c2370441d6a470751a4613140d
 
 def new_hike(request):
     user = request.user
@@ -59,22 +75,8 @@ def new_hike(request):
     else:
         return render(request, 'post.html', {'error': 'Something went wrong with your post'})
 
-def edit_post(request,pk):
-    post = Post.objects.get(id=pk)
-    if request.method == "POST":
-        description = request.POST['description']
-        distance_hiked = request.POST['distance_hiked']
-        photo_url = request.POST['photo_url']
-        
-        post.description = description
-        post.distance_hiked = distance_hiked
-        post.photo_url = photo_url
-        
-        post.save()
-        return redirect('wall')
-    else: 
-        return render(request, 'post_edit.html', {"post" : post})
 
+<<<<<<< HEAD
 def delete_post(request,pk):
     post = Post.objects.get(id=pk)
     if request.user.pk is not post.author.pk:
@@ -110,3 +112,5 @@ def like(request,pk):
     else:
         return render(request, 'user_wall.html')
 
+=======
+>>>>>>> 7b075d0a328331c2370441d6a470751a4613140d
