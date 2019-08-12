@@ -7,7 +7,7 @@ from .models import Post, Comment, Profile, Like
 
 # Create your views here.
 def home(request):
-    return render(request,'base.html')
+    return render(request,'home.html')
 
 def wall(request):
     posts = Post.objects.all()
