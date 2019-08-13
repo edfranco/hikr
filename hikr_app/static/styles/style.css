@@ -171,3 +171,8 @@ border:1px solid #ccc !important;
 .footer-section-bottom {
     height: 70vh;
 }
+
+.footer-quote {
+    margin-bottom: 0 !important;
+    color: whitesmoke !important;
+}
