@@ -14,11 +14,15 @@ def wall(request):
     comments = Comment.objects.all()
     likes = Like.objects.all()
     counter = 0
-    
+    for post in posts:
+        for like in likes:
+            if like.post.pk == post.pk:
+                counter = counter + 1
+                print(counter)
     return render(request, 'user_wall.html', { 
         "posts" : posts, 
         "comments": comments,
-        "likes":like,
+        "likes":likes,
         "counter":counter
         })
 
@@ -110,6 +114,7 @@ def like(request,pk):
             liker = liker,
             post = post
         )
+        # post.likes
         like.save()
         return redirect('wall')
     else:

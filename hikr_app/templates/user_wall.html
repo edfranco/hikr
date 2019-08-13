@@ -21,7 +21,7 @@
 
     <img src="{{post.photo_url}}" />
     <p>{{post.description}}</p>
-    <p>Distance:{{post.distance_hiked}}mi</p>
+    <p>Distance:{{post.distance_hiked}} miles</p>
 
     {% for comment in comments %}
     {% if comment.post.pk == post.pk %}
@@ -42,7 +42,7 @@
     </div>
     <div class="likes">
         <i class="thumb far fa-thumbs-up"></i>
-        <div class=likes-display>Like: 0</div>
+        <div class=likes-display>Like: {{ counter }}</div>
     </div>
     {% endfor %}
 </div>
