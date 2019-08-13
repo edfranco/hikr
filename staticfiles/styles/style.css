@@ -1,0 +1,265 @@
+body{
+    background-color:whitesmoke;
+    color:black;
+}
+
+#map {
+    height: 100vh;
+    width: 100vh;
+  }
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid black;
+    font-size: 1.3em;
+}
+
+nav ul{
+    margin: 0;
+}
+
+nav a{
+    color:black;
+    text-decoration: none;
+    list-style: none;
+    padding-right: 1em;
+}
+
+a:hover{
+    color: red;
+    text-decoration: none;
+}
+
+nav .left{
+    display: flex;
+    align-items: flex-end;
+}
+
+nav .right{
+    display: flex;
+    align-items: flex-end;
+    padding-right: 1em;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.post-container{
+    position: relative;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top:1em;
+    padding-top:1em;
+    border: 1px solid black;
+    border-collapse: separate;
+    border-spacing: 1em;
+}
+
+.post-container h4{
+    margin:0;
+}
+
+.post-container a{
+    color: black;
+    text-decoration: none;
+    font-size: 1.5em;
+    margin-bottom:1em;
+}
+
+.post-container img{
+    height:30vh;
+    width: 90%;
+}
+
+.post-top{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
+.find-location a{
+    color: rgb(95, 95, 244);
+    font-size: 1.3em;
+}
+.find-location a{
+    color: rgb(95, 95, 244);
+    font-size: 1.3em;
+}
+
+.ud-buttons{
+    position: absolute;
+    right:0;
+    top:0;
+}
+
+.likes{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.thumb:hover{
+    cursor: pointer;
+}
+
+.profile-container{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}   
+
+.profile-content{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    border-right: 1px solid black;
+    margin-right: 1em;
+}
+
+.profile-image-container{
+    height:50vh;
+    width:50vh;
+    padding:2em;
+}
+
+.profile-image-container img{
+    width: 100%;
+    height: 100%;
+}
+
+.users-posts{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    margin:1em;
+}
+
+input[type='text'],
+input[type='number'],
+input[type='password'],
+textarea {
+outline: none;
+box-shadow:none !important;
+border:1px solid #ccc !important;
+}
+
+.profile-img-section {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.user-profile-img {
+    border: black solid 1px;
+    border-radius: 100%;
+    height: 200px;
+    width: 200px;
+}
+
+.header-text {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.lead-text {
+    margin-bottom: 0;
+}
+
+.button-color {
+    background-color: #008CBA !important;
+    border-color: #008CBA !important;
+    color: white;
+}
+
+.user-comment {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.comment-container{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.comment-container img{
+    height:5vh;
+    width:5vh;
+    border-radius: 50%;
+}
+
+.ud-buttons {
+    margin-bottom: 15px;
+}
+
+.comment-btn {
+    margin-left: 5px;
+}
+
+.new-hike-btn {
+    display: flex;
+    justify-content: left;
+}
+
+.map-container{
+    height:70vh;
+}
+
+.map{
+    margin-top:5em;
+}
+
+
+.footer-section {
+    margin-top: 20px;
+    background-color: rgb(46, 49, 49);
+}
+
+.footer-logo {
+    margin-bottom: 5px;
+}
+
+.footer-section a:hover {
+    color: whitesmoke;
+}
+
+.footer-section-bottom {
+    height: 70vh;
+}
+
+.footer-quote {
+    margin-bottom: 0 !important;
+    color: whitesmoke !important;
+}
+
+@media only screen and (max-width: 600px){
+    .post-container{
+        width: 80vw;
+    }
+
+    .profile-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        
+    }
+
+    .profile-content{
+        border-right: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom:10em;
+    }
+
+    .post-container p{
+        margin: 0 1em;
+    }
+}
