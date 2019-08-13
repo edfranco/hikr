@@ -24,23 +24,32 @@
     <div class="users-posts">
         {% for post in posts %}
         <div class="post-container">
-            <h4>{{profile.user.username}}'s Hike</h4>
+            <div class="post-top">
+                <div class="spacer"></div>
+                <h4>{{profile.user.username}}'s Hike</h4>
+                {% if user.pk == post.author.pk %}
+                <div class="ud-buttons">
+                    <a href="{% url 'edit_post' pk=post.pk %}"><i class="far fa-edit"></i></a>
+                    <a href="{% url 'delete_post' pk=post.pk %}"><i class="far fa-trash-alt"></i></a>
+                </div>
+                {% endif %}
+
+            </div>
+
+
+
             <img src="{{post.photo_url}}" />
             <p>{{post.description}}</p>
             <p>Distance:{{post.distance_hiked}}mi</p>
 
             {% for comment in comments %}
             {% if comment.post.pk == post.pk %}
-            <p> {{ comment.author.first_name }}: {{ comment.content }}</p>
+            <div class="comment-container">
+                <p> {{ comment.author.first_name }}: {{ comment.content }}</p>
+            </div>
             {% endif %}
             {% endfor %}
 
-            {% if user.pk == post.author.pk %}
-            <div class="ud-buttons">
-                <a href="{% url 'edit_post' pk=post.pk %}"><button class="btn btn-success">Edit</button></a>
-                <a href="{% url 'delete_post' pk=post.pk %}"><button class="btn btn-danger">Delete</button></a>
-            </div>
-            {% endif %}
             {% endfor %}
         </div>
     </div>

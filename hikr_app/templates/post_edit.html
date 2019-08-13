@@ -14,6 +14,11 @@
                         value="{{ post.description }}" required>
                 </div>
                 <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" class="form-control" name="location" maxlength="250" minlength="2"
+                        value="{{ post.location }}" required>
+                </div>
+                <div class="form-group">
                     <label for="distance_hiked">Distance</label>
                     <input type="number" class="form-control" name="distance_hiked" value="{{ post.distance_hiked }}"
                         required>

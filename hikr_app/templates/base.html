@@ -6,6 +6,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">​
+    <!-- FontAwesome FavIcons -->
+    <script src="https://kit.fontawesome.com/bf2409f5c8.js"></script>
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/cfd2409b6f.js"></script>
     <!-- Bootstrap CSS -->
@@ -44,31 +46,33 @@
     <main>
         {% block content %}
         {% endblock %}
-        
-        
+
+
     </main>
 
     {% if user.is_authenticated %}
-        <footer class="footer-section">
-            <div class="row">
-                <div class="container">
-                    <div class="col-md-12">
-                        <div style="margin: 15px 0">
-                            <img class="footer-logo" src="{% static 'images/footer-logo.png' %}" width="50" height="50" alt="">
-                            <div>
-                                <a style="margin-right:10px" href="{% url 'wall' %}">Home</a>
-                                <a href="{% url 'profile' pk=user.pk %}">Profile</a>
-                            </div>
-                            <p class="font-weight-light footer-quote"><i>"In every walk with nature, one receives far more than he seeks."</i>
-                                <footer class="blockquote-footer">John Muir</footer>
-                            </p>
-                            <small style="color:white;">Copyright <i class="far fa-copyright"></i> 2019 Hikr Inc. All rights
-                                reserved.</small>
+    <footer class="footer-section">
+        <div class="row">
+            <div class="container">
+                <div class="col-md-12">
+                    <div style="margin: 15px 0">
+                        <img class="footer-logo" src="{% static 'images/footer-logo.png' %}" width="50" height="50"
+                            alt="">
+                        <div>
+                            <a style="margin-right:10px" href="{% url 'wall' %}">Home</a>
+                            <a href="{% url 'profile' pk=user.pk %}">Profile</a>
                         </div>
+                        <p class="font-weight-light footer-quote"><i>"In every walk with nature, one receives far more
+                                than he seeks."</i>
+                            <footer class="blockquote-footer">John Muir</footer>
+                        </p>
+                        <small style="color:white;">Copyright <i class="far fa-copyright"></i> 2019 Hikr Inc. All rights
+                            reserved.</small>
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
     {% endif %}
 
     <!-- Optional JavaScript -->
@@ -83,8 +87,10 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <!-- Main JS -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3nzuUYN7bHBcW8E2VjUMb-juiKKhB12M&callback=initMap"
+        async defer></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="{% static 'app.js' %}"></script>
+    <script src="{% static 'scripts/app.js' %}"></script>
 </body>
 
 </html>
