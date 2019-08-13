@@ -67,10 +67,13 @@ def edit_post(request,pk):
     post = Post.objects.get(id=pk)
     if request.method == "POST":
         description = request.POST['description']
+        location = request.POST['location']
         distance_hiked = request.POST['distance_hiked']
         photo_url = request.POST['photo_url']
         
+
         post.description = description
+        post.location = location
         post.distance_hiked = distance_hiked
         post.photo_url = photo_url
         
