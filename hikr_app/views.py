@@ -134,3 +134,9 @@ def api(request):
     }
     return JsonResponse(data,safe=False)
 
+def find_location(request,pk):
+    post = Post.objects.get(id=pk);
+    print(post)
+    
+    return render(request, 'location_map.html', { "post" : post })
+

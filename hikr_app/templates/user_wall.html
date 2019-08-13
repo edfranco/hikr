@@ -34,11 +34,13 @@
             {% csrf_token %}
             <div class="user-comment">
                 <input type="text" class="form-control" name="content" placeholder="Add Comment..">
-                <!-- <input type="text" placeholder="Add Comment.." name="content"> -->
-                <!-- <input type="submit"> -->
                 <button type="submit" class="btn btn-secondary comment-btn">Submit</button>
             </div>
         </form>
+        <div class="find-location">
+            <a href="{% url 'find_location' pk=post.pk %}"><button class="btn btn-secondary comment-btn">Find
+                    Location</button></a>
+        </div>
     </div>
     <div class="likes">
         <i class="thumb far fa-thumbs-up"></i>
