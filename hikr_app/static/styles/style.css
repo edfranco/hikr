@@ -51,6 +51,7 @@ main{
 }
 
 .post-container{
+    background-color: white; 
     position: relative;
     width: 40vw;
     display: flex;
@@ -147,6 +148,7 @@ textarea {
 outline: none;
 box-shadow:none !important;
 border:1px solid #ccc !important;
+background-color: whitesmoke;
 }
 
 .profile-img-section {
