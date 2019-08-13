@@ -20,6 +20,7 @@ Users can create a new hike post consisting of:
 - Photo_url
 
 Comment on post.
+
 Edit users profile and past hikes.
 
 ## Wireframes
