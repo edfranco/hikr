@@ -19,13 +19,23 @@
 
     </div>
 
+    <div class="find-location">
+        <p>Location:<a href="{% url 'find_location' pk=post.pk %}"> {{post.location}} </a> </p>
+    </div>
+
     <img src="{{post.photo_url}}" />
     <p>{{post.description}}</p>
     <p>Distance:{{post.distance_hiked}} miles</p>
 
     {% for comment in comments %}
     {% if comment.post.pk == post.pk %}
-    <p> {{ comment.author.first_name }}: {{ comment.content }}</p>
+    <div class="comment-container">
+        <img class="commenter-profile-pic" src="{{ comment.profile.image_url }}"
+            alt="{{ comment.author.username }} comment" />
+        <p> <a href="{% url 'profile' pk=comment.author.pk %}">{{ comment.author.username }}</a>:
+            {{ comment.content }}</p>
+    </div>
+
     {% endif %}
     {% endfor %}
 
@@ -37,15 +47,9 @@
                 <button type="submit" class="btn btn-secondary comment-btn">Submit</button>
             </div>
         </form>
-        <div class="find-location">
-            <a href="{% url 'find_location' pk=post.pk %}"><button class="btn btn-secondary comment-btn">Find
-                    Location</button></a>
-        </div>
+
     </div>
-    <div class="likes">
-        <i class="thumb far fa-thumbs-up"></i>
-        <div class=likes-display>Like: {{ counter }}</div>
-    </div>
+
     {% endfor %}
 </div>
 </main>

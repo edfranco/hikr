@@ -15,18 +15,9 @@ def home(request):
 def wall(request):
     posts = Post.objects.all()
     comments = Comment.objects.all()
-    likes = Like.objects.all()
-    counter = 0
-    for post in posts:
-        for like in likes:
-            if like.post.pk == post.pk:
-                counter = counter + 1
-                print(counter)
     return render(request, 'user_wall.html', { 
         "posts" : posts, 
         "comments": comments,
-        "likes":likes,
-        "counter":counter
         })
 
 def profile(request,pk):
@@ -53,11 +44,13 @@ def new_hike(request):
     user = request.user
     if request.method == 'POST':
         description = request.POST['description']
+        location = request.POST['location']
         distance_hiked = request.POST['distance_hiked']
         photo_url = request.POST['photo_url']
 
         post = Post.objects.create(
             author = user,
+            location = location,
             description = description,
             distance_hiked = distance_hiked,
             photo_url = photo_url
@@ -96,12 +89,14 @@ def delete_post(request,pk):
 def comment_post(request,pk):
     user = request.user
     post = Post.objects.get(id=pk)
+    profile = Profile.objects.get(id=request.user.pk)
     if request.method == "POST":
         content = request.POST['content']
         comment = Comment.objects.create(
             content = content,
             author = user,
-            post = post
+            post = post,
+            profile=profile
         )
         comment.save()
         return redirect('wall')

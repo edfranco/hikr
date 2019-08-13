@@ -34,6 +34,7 @@ class Profile(models.Model):
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete = models.CASCADE, related_name= 'comment_author' )
     post = models.ForeignKey(Post, on_delete = models.CASCADE, related_name= 'comments_post')
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="comments_profile")
     content = models.TextField()
 
 class Like(models.Model):
