@@ -53,11 +53,15 @@ main{
 .post-container{
     position: relative;
     width: 40vw;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    margin-top:1em;
+    padding-top:1em;
+    border: 1px solid black;
+    border-collapse: separate;
+    border-spacing: 1em;
 }
 
 .post-container h4{
@@ -73,7 +77,7 @@ main{
 
 .post-container img{
     height:30vh;
-    width: 100%;
+    width: 90%;
 }
 
 .post-top{
@@ -232,4 +236,30 @@ border:1px solid #ccc !important;
 .footer-quote {
     margin-bottom: 0 !important;
     color: whitesmoke !important;
+}
+
+@media only screen and (max-width: 600px){
+    .post-container{
+        width: 80vw;
+    }
+
+    .profile-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        
+    }
+
+    .profile-content{
+        border-right: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom:10em;
+    }
+
+    .post-container p{
+        margin: 0 1em;
+    }
 }
