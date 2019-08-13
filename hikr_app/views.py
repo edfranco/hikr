@@ -7,7 +7,10 @@ from .models import Post, Comment, Profile, Like
 
 # Create your views here.
 def home(request):
-    return render(request,'home.html')
+    if request.user.is_authenticated:
+        return redirect('wall')
+    else:
+        return render(request,'home.html')
 
 def wall(request):
     posts = Post.objects.all()

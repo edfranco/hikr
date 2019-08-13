@@ -2,7 +2,7 @@
 {% block content %}
 
 
-<div class="container">
+<div class="container footer-section-bottom">
 	<div class="row">
 		<div class="col-md-6 offset-md-3">
 			<h2>Posts</h2>
@@ -31,24 +31,4 @@
 	</div>
 </div>
 
-<!-- <h2>Posts</h2>
-
-<form action="{% url 'new_hike' %}" method="POST">
-	{% csrf_token %}
-	<p>
-		<label for="description">Description</label>
-		<input type="text" name="description" required maxlength="250" minlength="2" />
-	</p>
-
-	<p>
-		<label for="distance_hiked">Distance</label>
-		<input type="number" name="distance_hiked" required />
-	</p>
-	<p>
-		<label for="photo_url">Photo Url</label>
-		<input type="text" name="photo_url" required />
-	</p>
-
-	<button type="submit">Submit</button>
-</form> -->
 {% endblock %}
