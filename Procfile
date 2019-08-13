@@ -1,1 +1,1 @@
-web: gunicorn {hikr}.wsgi --log-file -
+web: gunicorn hikr.wsgi --log-file -
