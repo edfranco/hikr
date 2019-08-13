@@ -203,6 +203,14 @@ border:1px solid #ccc !important;
     justify-content: left;
 }
 
+.map-container{
+    height:70vh;
+}
+
+.map{
+    margin-top:5em;
+}
+
 
 .footer-section {
     margin-top: 20px;
