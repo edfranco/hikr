@@ -1,24 +1,56 @@
 {% extends 'base.html' %}
 {% block content %}
-<main>
-    <h2>Posts</h2>
-    {% for post in posts %}
-    <div class="post-container">
-        <a href="{% url 'profile' pk=post.author.pk %}">
-            <h4>{{post.author}}'s Hike</h4>
-        </a>
 
-        <img src="{{post.photo_url}}" />
-        <p>{{post.description}}</p>
-        <p>Distance:{{post.distance_hiked}}mi</p>
+<h2>Posts</h2>
+{% for post in posts %}
+<div class="post-container" id="{{ post.pk }}">
+    <div class="post-top">
+        <div class="spacer"></div>
+        <a href="{% url 'profile' pk=post.author.pk %}">
+            <h4>{{post.author.first_name}}'s Hike</h4>
+        </a>
 
         {% if user.pk == post.author.pk %}
         <div class="ud-buttons">
-            <a href="{% url 'edit_post' pk=post.pk %}"><button>Edit</button></a>
-            <a href="{% url 'delete_post' pk=post.pk %}"><button>Delete</button></a>
+            <a href="{% url 'edit_post' pk=post.pk %}"><i class="far fa-edit"></i></a>
+            <a href="{% url 'delete_post' pk=post.pk %}"><i class="far fa-trash-alt"></i></a>
         </div>
         {% endif %}
-        {% endfor %}
+
     </div>
+
+    <div class="find-location">
+        <p>Location:<a href="{% url 'find_location' pk=post.pk %}"> {{post.location}} </a> </p>
+    </div>
+
+    <img src="{{post.photo_url}}" />
+    <p>{{post.description}}</p>
+    <p>Distance:{{post.distance_hiked}} miles</p>
+
+    {% for comment in comments %}
+    {% if comment.post.pk == post.pk %}
+    <div class="comment-container">
+        <img class="commenter-profile-pic" src="{{ comment.profile.image_url }}"
+            alt="{{ comment.author.username }} comment" />
+        <p> <a href="{% url 'profile' pk=comment.author.pk %}">{{ comment.author.username }}</a>:
+            {{ comment.content }}</p>
+    </div>
+
+    {% endif %}
+    {% endfor %}
+
+    <div class="comment-form">
+        <form action="{% url 'comment_post' pk=post.pk %}" method="POST">
+            {% csrf_token %}
+            <div class="user-comment">
+                <input type="text" class="form-control" name="content" placeholder="Add Comment..">
+                <button type="submit" class="btn btn-secondary comment-btn">Submit</button>
+            </div>
+        </form>
+
+    </div>
+
+    {% endfor %}
+</div>
 </main>
 {% endblock %}
