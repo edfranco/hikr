@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="about">
+    <div class="scott">
+        <img src="{{ scott_profile.image_url }}" alt="{scott.first_name} profile picture" />
+        <h1> {{ scott.first_name }} {{ scott.last_name }} </h1>
+        <h4>Lead Front-End Engineer</h4>
+        <p>Scott is the visual mastermind of the Hikr Team. He is highly skilled in HTML, CSS,
+            and JavaScript with a very specific focus on BootStrap and niche design</p>
+    </div>
+    <div class="zafar">
+        <img src="{{ zafar_profile.image_url }}" alt="{zafar.first_name} profile picture" />
+        <h1> {{ zafar.first_name }} {{ zafar.last_name }} </h1>
+        <h4>Senior Back-End Engineer</h4>
+        <p>Zafar is the lead debugger and big picture thinker in the Hikr Team. His background in
+            security translates perfctly in the Hikr back-end security development and
+            his attnetion to detail helps expedite all the daily bug squashing</p>
+    </div>
+    <div class="eduardo">
+        <img src="{{ eduardo_profile.image_url }}" alt="{eduardo.first_name} profile picture" />
+        <h1> {{ eduardo.first_name }} {{ zafar.last_name }} </h1>
+        <h4>Full Stack Engineer</h4>
+        <p>Eduardo helped connect and support the process of creating both the front-end views of the site and server
+            management of the site</p>
+    </div>
+
+
+</div>
+{% endblock %}

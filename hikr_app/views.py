@@ -13,7 +13,7 @@ def home(request):
         return render(request,'home.html')
 
 def wall(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-date_posted')
     comments = Comment.objects.all()
     return render(request, 'user_wall.html', { 
         "posts" : posts, 
@@ -22,7 +22,7 @@ def wall(request):
 
 def profile(request,pk):
     profile = Profile.objects.get(id=pk)
-    posts = Post.objects.filter(author=profile.user)
+    posts = Post.objects.filter(author=profile.user).order_by('-date_posted')
     comments = Comment.objects.all()
     likes = Like.objects.all()
    
@@ -137,7 +137,23 @@ def api(request):
 
 def find_location(request,pk):
     post = Post.objects.get(id=pk);
-    print(post)
     
     return render(request, 'location_map.html', { "post" : post })
+
+def about(request):
+    scott = User.objects.get(pk=2)
+    scott_profile = Profile.objects.get(pk=2)
+    zafar = User.objects.get(pk=2)
+    zafar_profile = Profile.objects.get(pk=2)
+    eduardo = User.objects.get(pk=1)
+    eduardo_profile = Profile.objects.get(pk=1)
+
+    return render(request, 'about.html', { 
+        "scott":scott,
+        "scott_profile":scott_profile,
+        "zafar":zafar,
+        "zafar_profile":zafar_profile,
+        "eduardo":eduardo,
+        "eduardo_profile":eduardo_profile,
+          })
 

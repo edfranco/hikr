@@ -13,12 +13,7 @@ class Post(models.Model):
     distance_hiked = models.PositiveIntegerField()
     location = models.CharField(max_length=100)
     photo_url = models.TextField()
-    likes = 0
-
-    # def like_toggle(self,user):
-        # if user has liked post
-        # unlike
-        # else like
+    date_posted = models.DateField(default = timezone.now)
 
     def __str__(self):
       return (f"{self.author.first_name} Post")
