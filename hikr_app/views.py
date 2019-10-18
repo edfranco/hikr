@@ -20,6 +20,10 @@ def wall(request):
         "comments": comments,
         })
 
+# highlighted for airbnb apprenticeship app
+# Gives flavor to the profile by displaying how many posts a user 
+#has and the total amount of distane a user has hiked by adding up all the posts 
+#and adding all the posts model's distance hiked attribute
 def profile(request,pk):
     profile = Profile.objects.get(id=pk)
     posts = Post.objects.filter(author=profile.user).order_by('-date_posted')
